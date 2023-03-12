@@ -34,3 +34,8 @@ pip install matplotlib
 # It is also possible to generate output files directly
 ./plot.py -i out.json -o out.eps
 ```
+
+### Sample Output
+
+![Sample output](sample.png)
+
