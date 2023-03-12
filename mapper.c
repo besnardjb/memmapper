@@ -1,4 +1,3 @@
-#include <bits/types/struct_timeval.h>
 #include <hwloc.h>
 #include <assert.h>
 #include <pthread.h>
