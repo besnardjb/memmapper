@@ -11,7 +11,7 @@
 #define CLEARLINE()    do{ fprintf(stderr, "\033[2K\033[1F\033[2K"); }while(0)
 
 #define LOG(...)       do{ fprintf(stderr, "%s:%d -- ", __FUNCTION__, __LINE__); \
-		           fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n"); }while(0)
+	fprintf(stderr, __VA_ARGS__); fprintf(stderr, "\n"); }while(0)
 
 
 double __get_ts(void)
@@ -148,10 +148,10 @@ double compute_read_bw(void *target, size_t size)
 
 static inline void __show_help(char **argv)
 {
-    fprintf(stderr, "%s -s [SIZE] -i [ITER] -o [OUTPUT JSON]\n", argv[0]);
-    fprintf(stderr, "-s : total size to move in bytes\n");
-    fprintf(stderr, "-i : number of averaging iterations\n");
-    fprintf(stderr, "-o : output json file\n");
+	fprintf(stderr, "%s -s [SIZE] -i [ITER] -o [OUTPUT JSON]\n", argv[0]);
+	fprintf(stderr, "-s : total size to move in bytes\n");
+	fprintf(stderr, "-i : number of averaging iterations\n");
+	fprintf(stderr, "-o : output json file\n");
 
 	exit(0);
 }
