@@ -1,6 +1,4 @@
-# memmapper
-
-A simple C program to map memory bandwidth on nodes. It will run and average arbitrary transfers from core-to-core.
+# Guidelines
 
 ## Installation
 
@@ -15,11 +13,31 @@ make
 
 ## Usage
 
+This project build several programs to measure multiple metrics:
+* `memmapper`: core-to-core memory bandwitdh (memcpy's)
+* `cache`: cache bandwidth
+* `cache`: bound processes-to-processes memory transfer (`process_vm_*`)
+* `shmem`: bound process-to-process memory transfer (MAP_SHARED)
+
+To build all scenarios at once (each run will produce a JSON output file):
+```sh
+$ ./gen.py > s.sh
+$ ./s.sh
 ```
-mapper -s [SIZE] -i [ITER] -o [OUTPUT JSON]
--s : total size to move in bytes
--i : number of averaging iterations
--o : output json file
+
+memmapper Usage:
+```sh
+ : total size to move in bytes
+ -i : number of averaging iterations
+ -o : output json file
+```
+
+Other programs Usage:
+```sh
+Usage: ./<program> [-i/-I] [-c/-r] [-c]
+
+Transfer: intra-socket (-i) or inter-socket (-I)
+Prefetch: Cold (-c) or Hot (-r)
 ```
 
 ## Plot
@@ -33,6 +51,18 @@ pip install matplotlib
 ./plot.py -i out.json
 # It is also possible to generate output files directly
 ./plot.py -i out.json -o out.eps
+```
+
+To build results with matplotlib:
+```sh
+./plot.py -i out.json
+# pretty-printing (in GB/sec)
+./plot.py --gb -i out.json
+# export depending on file extension
+./plot -o file.png -i out.json
+
+#one-liner
+for f in ./results/*; do ./plot.py $f; done
 ```
 
 ### Sample Output

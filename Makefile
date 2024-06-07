@@ -15,8 +15,8 @@ cma: cma.c
 shmem: shmem.c
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@ -Wall -march=native -O3
 
-cuda: cuda.c
-	-$(NVCC) $^ -o $@ --optimize 3
+#cuda: cuda.c
+#	-$(NVCC) $^ -o $@ --optimize 3
 
 
 cache: cache.c
